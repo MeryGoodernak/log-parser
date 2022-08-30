@@ -41,17 +41,17 @@ and to run rubocop:
 ```
 
 ## Design approach
-This project parse a web server log file with interact of 5 classes:
+This project parses a web server log file and prints out the statistics through the interaction of the following classes:
 
-* `DataKeeper`: responsible for storing extracted data from file into a hash with page as key and an array of ips that viewed the page.
+* `DataKeeper`: is responsible for storing the extracted data from log file into a hash with the page url as the key and an array of IPs that viewed the page as the value.
 
-* `Reeder`: responsible for reading each line of the log file and if it is a valid line add it to the DataKeeper.
+* `Reader`: is responsible for reading the log file one line at a time and adding it to the `DataKeeper` if it is a valid log line.
 
-* `Validator`: responsible for checking the validity of each line of the web server log file. The validator checks whether the string matches the pattern of URL and IP or not.
+* `Validator`: is responsible for checking the validity of each line of the web server log. The validator checks whether the string matches a pattern of a URL and an IP address.
 
-* `Counter`: responsible for counting the number of total and unique views per page.
+* `Counter`: is responsible for counting the number of total and unique views per page.
 
-* `Printer`: responsible for printing the result of the Counter to the console.
+* `Printer`: is responsible for formatting the desired outputs and printing them to the console.
 
 
-The start point of the project is `parser.rb` script.
+The entry point of the project is `parser.rb` script.

@@ -53,7 +53,10 @@ This project parses a web server log file and prints out the statistics through 
 
 * `Printer`: is responsible for formatting the desired outputs and printing them to the console.
 
+Message passing among classes is depicted in the following sequence diagram: 
 
-The entry point of the project is `parser.rb` script. `Reader` takes the file path and an instance of `DataKeeper` as arguments. `Reader` utilizes an instance of `Validator` per line and sends `add` message with a valid line as argument to the received instance of `DataKeeper`. `DataKeeper` splits and stores the line in its internal data structure which is a Hash. This process will perform while there is unprocessed line in the log file.
-Then `Counter` gets the same instance of `DataKeeper` which has already had the organized data and `Printer` receives the `Counter` instance.
+![seqdiag](https://user-images.githubusercontent.com/85104225/187664593-26ad762e-7218-4c1b-9bf1-b710fc724c90.png)
+
+The entry point of the project is `parser.rb` script. `Reader` takes the file path and an instance of `DataKeeper` as arguments. `Reader` utilizes an instance of `Validator` per line and sends `add` message with a valid line as argument to the received instance of `DataKeeper`. `DataKeeper` splits and stores the line in its internal data structure which is a Hash. This process will perform until there is at least one unprocessed line in the log file.
+Then `Counter` gets the same instance of `DataKeeper` which already has the structured data and `Printer` receives the `Counter` instance.
 Finally, `parser` sends double `print_views` messages to the `Printer` instance for printing total and unique page views respectively.

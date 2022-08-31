@@ -54,5 +54,8 @@ DEPENDENCIES
   rubocop-rspec (~> 2.11.1)
   simplecov (~> 0.21.2)
 
+RUBY VERSION
+   ruby 3.0.3p157
+
 BUNDLED WITH
    2.3.14

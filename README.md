@@ -1,6 +1,6 @@
 # log-parser
 
-This is a Ruby project that parses a log file and prints the nubmer of unique and total views per page.
+This is a Ruby project that parses a log file and prints the number of unique and total views per page.
 
 ## Installation
 
@@ -10,7 +10,7 @@ First clone the repository. Then on your terminal go to the root directory of th
 bundle install
 ```
 
-This command installs all the dependecies.
+This command installs all the dependencies.
 
 ## Run
 
@@ -54,4 +54,6 @@ This project parses a web server log file and prints out the statistics through 
 * `Printer`: is responsible for formatting the desired outputs and printing them to the console.
 
 
-The entry point of the project is `parser.rb` script.
+The entry point of the project is `parser.rb` script. `Reader` takes the file path and an instance of `DataKeeper` as arguments. `Reader` utilizes an instance of `Validator` per line and sends `add` message with a valid line as argument to the received instance of `DataKeeper`. `DataKeeper` splits and stores the line in its internal data structure which is a Hash. This process will perform while there is unprocessed line in the log file.
+Then `Counter` gets the same instance of `DataKeeper` which has already had the organized data and `Printer` receives the `Counter` instance.
+Finally, `parser` sends double `print_views` messages to the `Printer` instance for printing total and unique page views respectively.

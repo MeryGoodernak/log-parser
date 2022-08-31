@@ -17,7 +17,7 @@ This command installs all the dependencies.
 In order to run the project, on your terminal run command below:
 
 ```
-chmode +x parser.rb
+chmod +x parser.rb
 ```
 This command adds executable permission to the `parser.rb` for all users. Then run:
 
@@ -44,7 +44,7 @@ and to run rubocop:
 The code base is 100% under test coverage.😎
 
 ## Design Approach
-This project parses a web server log file and prints out the statistics through the interaction of the following classes:
+This project parses a web server log file and prints out the statistics through the interactions of the following classes:
 
 * `DataKeeper`: is responsible for storing the extracted data from log file into a hash with the page url as the key and an array of IPs that viewed the page as the value.
 
@@ -67,6 +67,5 @@ Finally, `parser` sends double `print_views` messages to the `Printer` instance 
 ## Future Works
 * Validate log file extension.
 * Validate log file read permission.
-* Restrict DataKeeper reading access. DataKeeper needs an interface for limited access to the internal data structure.
-* Implement alternative DataKeeper class to use Redis as the storage.
+* Restrict DataKeeper reading access. DataKeeper needs an interface for limiting access to the internal data structure.
 * Release the project as a ruby gem.
